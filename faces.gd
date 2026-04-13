@@ -13,20 +13,19 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	if button.button_pressed and active == 0:
+		active = 1
+		queue_redraw()
+		
 		
 func _draw():
 	gen_faces()
+	active = 0
 
 func _on_button_pressed() -> void:
 	queue_redraw()
 	
 func gen_faces():
-	if button.pressed and active != 1:
-		active = 1
-	else:
-		active = 0
-		
 	if active == 1:
 		var num = randi_range(1,10)
 		
@@ -72,4 +71,3 @@ func gen_faces():
 		
 		$Happy.text = str('Happy: ', happy)
 		$Sad.text = str('Sad: ', sad)
-	active = 0
