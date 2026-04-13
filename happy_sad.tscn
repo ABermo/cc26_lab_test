@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dy5eeyrbui867"]
+
+[ext_resource type="Script" uid="uid://cqjgx4caduhpj" path="res://faces.gd" id="1_jx8c7"]
+
+[node name="Node2D" type="Node2D" unique_id=989947483]
+script = ExtResource("1_jx8c7")
+
+[node name="Click_Me" type="Button" parent="." unique_id=1405535883]
+offset_left = 22.0
+offset_top = 14.0
+offset_right = 99.0
+offset_bottom = 45.0
+text = "Click Me!"
