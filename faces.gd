@@ -92,3 +92,34 @@ func draw_faces():
 			draw_circle(Vector2(x, y - r/4.0), r*0.1, color, false)
 	$Happy.text = str('Happy: ', happy)
 	$Sad.text = str('Sad: ', sad)
+
+func _input(event: InputEvent) -> void:
+	destroy(event)
+
+
+
+func destroy(event):
+	var x = event.position.x
+	var y = event.position.y
+	
+	var face = 0
+	while face < len(x_loc):
+		var gap = distance(x,y,x_loc[face],y_loc[face])
+		
+		if gap < r_past[face]:
+			x_loc.pop_at(face)
+			y_loc.pop_at(face)
+			r_past.pop_at(face)
+			eyes_past.pop_at(face)
+			emotion_past.pop_at(face)
+			color_past.pop_at(face)
+			
+			queue_redraw()
+		
+		face += 1
+
+func distance(x1,y1,x2,y2):
+	var x = abs(x1 - x2)
+	var y = abs(y1 - y2)
+	return (x**2 + y**2)**0.5
+	
